@@ -125,7 +125,7 @@ module Plist::Emit
     out = nil
 
     if block_given?
-      out = IndentedString.new '  '
+      out = IndentedString.new ' '
       out << "<#{type}>"
       out.raise_indent
 
