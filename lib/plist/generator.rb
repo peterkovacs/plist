@@ -125,7 +125,7 @@ module Plist::Emit
     out = nil
 
     if block_given?
-      out = IndentedString.new
+      out = IndentedString.new '  '
       out << "<#{type}>"
       out.raise_indent
 
@@ -197,14 +197,7 @@ module Plist::Emit
           self << f
         end
       else
-        # if it's already indented, don't bother indenting further
-        unless val =~ /\A#{@indent_string}/
-          indent = @indent_string * @indent_level
-
-          @contents << val.gsub(/^/, indent)
-        else
-          @contents << val
-        end
+        @contents << @indent_string << val
 
         # it already has a newline, don't add another
         @contents << "\n" unless val =~ /\n$/
