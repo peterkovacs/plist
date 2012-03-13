@@ -106,6 +106,8 @@ module Plist::Emit
         data = "\n"
         Base64::encode64(contents).gsub(/\s+/, '').scan(/.{1,68}/o) { data << $& << "\n" }
         output << tag('data', data)
+      when NilClass
+	output << '<data/>'
       else
         output << comment( 'The <data> element below contains a Ruby object which has been serialized with Marshal.dump.' )
         data = "\n"
