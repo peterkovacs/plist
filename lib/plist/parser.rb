@@ -210,6 +210,7 @@ module Plist
   require 'base64'
   class PData < PTag
     def to_ruby
+      return nil if text.nil?
       data = Base64.decode64(text.gsub(/\s+/, ''))
 
       begin
