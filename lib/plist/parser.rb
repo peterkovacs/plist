@@ -73,10 +73,10 @@ module Plist
     end
 
     TEXT       = /([^<]+)/
-    XMLDECL_PATTERN = /<\?xml\s+(.*?)\?>*/um
-    DOCTYPE_PATTERN = /\s*<!DOCTYPE\s+(.*?)(\[|>)/um
-    COMMENT_START = /\A<!--/u
-    COMMENT_END = /.*?-->/um
+    XMLDECL_PATTERN = /<\?xml\p{Space}+(.*?)\?>*/m
+    DOCTYPE_PATTERN = /\s*<!DOCTYPE\p{Space}+(.*?)(\[|>)/m
+    COMMENT_START = /\A<!--/
+    COMMENT_END = /.*?-->/m
 
 
     def parse
