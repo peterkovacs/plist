@@ -72,17 +72,17 @@ module Plist
       @listener = listener
     end
 
-    TEXT       = /([^<]+)/
-    XMLDECL_PATTERN = /<\?xml\p{Space}+(.*?)\?>*/m
-    DOCTYPE_PATTERN = /\s*<!DOCTYPE\p{Space}+(.*?)(\[|>)/m
-    COMMENT_START = /\A<!--/
-    COMMENT_END = /.*?-->/m
+    TEXT       = /([^<]+)/u
+    XMLDECL_PATTERN = /<\?xml\p{Space}+(.*?)\?>*/um
+    DOCTYPE_PATTERN = /\s*<!DOCTYPE\p{Space}+(.*?)(\[|>)/um
+    COMMENT_START = /\A<!--/u
+    COMMENT_END = /.*?-->/um
 
 
     def parse
       plist_tags = PTag::mappings.keys.join('|')
-      start_tag  = /<(#{plist_tags})([^>]*)>/i
-      end_tag    = /<\/(#{plist_tags})[^>]*>/i
+      start_tag  = /<(#{plist_tags})([^>]*)>/ui
+      end_tag    = /<\/(#{plist_tags})[^>]*>/ui
 
       require 'strscan'
 
