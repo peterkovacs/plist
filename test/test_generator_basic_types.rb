@@ -50,4 +50,9 @@ class TestGeneratorBasicTypes < Test::Unit::TestCase
     assert_equal wrap('date', test_date.strftime('%Y-%m-%dT%H:%M:%SZ')), Plist::Emit.dump(test_date, false).chomp
     assert_equal wrap('date', test_datetime.strftime('%Y-%m-%dT%H:%M:%SZ')), Plist::Emit.dump(test_datetime, false).chomp
   end
+
+  def test_bigdecimal
+    decimal = BigDecimal.new( '10.0' )
+    assert_equal wrap( 'real', '10.0' ), Plist::Emit.dump( decimal, false ).chomp
+  end
 end

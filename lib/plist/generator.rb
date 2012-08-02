@@ -96,6 +96,8 @@ module Plist::Emit
         output << tag('date', element.strftime('%Y-%m-%dT%H:%M:%SZ'))
       when String, Symbol, Fixnum, Bignum, Integer, Float
         output << tag(element_type(element), CGI::escapeHTML(element.to_s))
+      when BigDecimal
+        output << tag(element_type(element), CGI::escapeHTML(element.to_f.to_s))
       when IO, StringIO
         element.rewind
         contents = element.read
@@ -164,7 +166,7 @@ module Plist::Emit
     when Fixnum, Bignum, Integer
       'integer'
 
-    when Float
+    when Float, BigDecimal
       'real'
 
     else

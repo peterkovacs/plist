@@ -12,6 +12,7 @@
 require 'base64'
 require 'cgi'
 require 'stringio'
+require 'bigdecimal'
 
 require 'plist/generator'
 require 'plist/parser'
