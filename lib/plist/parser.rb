@@ -73,8 +73,8 @@ module Plist
     end
 
     TEXT       = /([^<]+)/u
-    XMLDECL_PATTERN = /<\?xml\p{Space}+(.*?)\?>*/um
-    DOCTYPE_PATTERN = /\s*<!DOCTYPE\p{Space}+(.*?)(\[|>)/um
+    XMLDECL_PATTERN = /<\?xml\s+(.*?)\?>*/m
+    DOCTYPE_PATTERN = /\s*<!DOCTYPE\s+(.*?)(\[|>)/m
     COMMENT_START = /\A<!--/u
     COMMENT_END = /.*?-->/um
 
